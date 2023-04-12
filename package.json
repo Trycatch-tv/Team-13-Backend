@@ -9,6 +9,7 @@
     "prepare": "husky install",
     "start": "node dist/src/main.js",
     "start:dev": "tsnd --respawn src/main.ts",
+    "build": "tsc",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.ts --fix"
   },
   "author": "",
