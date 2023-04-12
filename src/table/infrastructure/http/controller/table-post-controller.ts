@@ -15,8 +15,9 @@ export class TablePostController {
         .status(status.CREATED)
         .json(new ApiResponse('Success', 'Table created', table));
     } catch (error) {
-      console.log('error');
-      return res.status(status.INTERNAL_SERVER_ERROR).json();
+      return res
+        .status(status.INTERNAL_SERVER_ERROR)
+        .json(new ApiResponse('Error', 'Internal server error', error));
     }
   }
 }
