@@ -31,4 +31,9 @@ export class InMemoryTableRepository implements TableRepository {
     });
     return tables;
   }
+
+  async findById(id: string | number): Promise<Table | null> {
+    const table = TABLES.find((table) => id === table.id);
+    return table ?? null;
+  }
 }
