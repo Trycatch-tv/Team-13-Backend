@@ -80,3 +80,31 @@ GET api/tables?location=2&capacity=4
   ]
 }
 ```
+
+## Find Table By Id
+
+#### Find Table By Id Request
+
+```js
+POST api/table/id
+```
+
+#### Find table by id Response
+
+```js
+200 OK
+```
+
+```json
+{
+  "status": "Success",
+  "message": "Table gotten",
+  "data": {
+    "id": "5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3",
+    "number_table": 1,
+    "capacity": 4,
+    "location": 4,
+    "createdAt": "2023-04-14T04:26:11.560Z"
+  }
+}
+```
