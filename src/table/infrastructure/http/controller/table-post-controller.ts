@@ -1,14 +1,14 @@
 import { Request, Response } from 'express';
 import status from 'http-status';
 
-import { CreateTableDto } from '../../../domain/table';
+import { TableDto } from '../../../domain/table';
 import { TableCreator } from '../../../application/table-create-use-case';
 import { ApiResponse } from '../../../../shared/api-response';
 
 export class TablePostController {
   constructor(private readonly _tableCreator: TableCreator) {}
 
-  async run(req: Request<CreateTableDto>, res: Response) {
+  async run(req: Request<TableDto>, res: Response) {
     try {
       const table = await this._tableCreator.run(req.body);
       return res

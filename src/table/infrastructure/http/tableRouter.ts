@@ -4,6 +4,7 @@ import {
   tablePostController,
   tableFinderGetController,
   tableFindByIdController,
+  tableUpdateGetController,
 } from '../dependencies';
 
 const tableRouter = express.Router();
@@ -16,6 +17,11 @@ tableRouter.get(
 tableRouter.get(
   '/:id',
   tableFindByIdController.run.bind(tableFindByIdController)
+);
+
+tableRouter.put(
+  '/:id',
+  tableUpdateGetController.run.bind(tableUpdateGetController)
 );
 
 export { tableRouter };

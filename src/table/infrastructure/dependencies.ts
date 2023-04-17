@@ -6,6 +6,8 @@ import { TableFinder } from '../application/table-finder-use-case';
 import { TableFinderGetController } from './http/controller/table-finder-get-controller';
 import { TableFindById } from '../application/table-find-use-case';
 import { TableFindByIdGetController } from './http/controller/table-findById-get-controller';
+import { UpdateTable } from '../application/table-update-use-case';
+import { TableUpdateGetController } from './http/controller/table-update-get-controller';
 
 const dbTableRepository = new InMemoryTableRepository();
 
@@ -20,4 +22,9 @@ export const tableFinderGetController = new TableFinderGetController(
 const tableFindById = new TableFindById(dbTableRepository);
 export const tableFindByIdController = new TableFindByIdGetController(
   tableFindById
+);
+
+const tableUpdated = new UpdateTable(dbTableRepository);
+export const tableUpdateGetController = new TableUpdateGetController(
+  tableUpdated
 );
