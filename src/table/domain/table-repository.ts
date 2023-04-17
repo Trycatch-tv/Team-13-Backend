@@ -1,4 +1,4 @@
-import { Table, TableDto } from "./table";
+import { Table, TableDto } from './table';
 
 export interface TableRepository {
   save(table: Table): Promise<Table>;

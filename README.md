@@ -86,7 +86,11 @@ GET api/tables?location=2&capacity=4
 #### Find Table By Id Request
 
 ```js
-POST api/table/id
+GET api/table/id
+```
+
+```js
+GET api/table/5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3
 ```
 
 #### Find table by id Response
@@ -106,5 +110,66 @@ POST api/table/id
     "location": 4,
     "createdAt": "2023-04-14T04:26:11.560Z"
   }
+}
+```
+
+```js
+404 Not Found
+```
+
+```json
+{
+  "status": "Error",
+  "message": "Table not found \"23\""
+}
+```
+
+## Update Table
+
+#### Update Table Request
+
+```js
+PUT api/table/id
+```
+
+```js
+PUT api/table/5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3
+
+{
+  "number_table": 50,
+  "capacity": 10,
+  "location": 4
+}
+```
+
+#### Update Table Response
+
+```js
+200 OK
+```
+
+```json
+{
+  "status": "Success",
+  "message": "Table Updated",
+  "data": {
+    "id": "5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3",
+    "number_table": 50,
+    "capacity": 10,
+    "location": 4,
+    "createdAt": "2023-04-17T02:43:27.988Z",
+    "updatedAt": "2023-04-17T02:44:24.212Z"
+  }
+}
+```
+
+```js
+404 Not Found
+```
+
+```json
+{
+  "status": "Error",
+  "message": "Table not found \"23\""
 }
 ```
