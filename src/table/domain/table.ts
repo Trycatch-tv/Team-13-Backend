@@ -20,4 +20,4 @@ export class Table {
   }
 }
 
-export type TableDto = Omit<Table, "id" | "createdAt" | "updateApp">;
+export type TableDto = Omit<Table, "id" | "createdAt" | "updatedAt">;
