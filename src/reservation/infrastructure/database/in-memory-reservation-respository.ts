@@ -5,6 +5,37 @@ import { RESERVATIONS } from './reservation_collection';
 
 export class InMemoryReservationRepository implements ReservationRepository {
 
+  async reservationFinder(client?: string | undefined, number_people?: number | undefined, table?: Table | undefined): Promise<Reservation[]> {
+    const reservations = RESERVATIONS.filter((reservation)=>{
+      if (client === undefined && number_people === undefined && table === undefined){
+        return true;
+      }
+
+      if (client === undefined && number_people == undefined && table!==undefined){
+        reservation.table > table; 
+      }
+
+      if (client === undefined && table === undefined && number_people !== undefined){
+        reservation.number_people > number_people;
+      }
+
+      if ( number_people === undefined && table === undefined && client !== undefined){
+        reservation.client > client;
+      }
+
+      return (
+        client !== undefined &&
+        number_people !== undefined && 
+        table !== undefined &&
+        reservation.client > client &&
+        reservation.number_people > number_people && 
+        reservation.table > table
+      );
+    })
+    return reservations;
+
+  }
+
   async findReservationById(
     idReservation: string | number
   ): Promise<Reservation | null> {
