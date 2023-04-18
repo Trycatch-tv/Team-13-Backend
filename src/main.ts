@@ -4,6 +4,7 @@ dotEnvConfig();
 
 import { config } from "./config";
 import { tableRouter } from "./table/infrastructure/http/tableRouter";
+import { reservationRouter } from "./reservation/infrastructure/http/reservationRouter";
 
 function boostrap() {
   const app = express();
@@ -11,6 +12,7 @@ function boostrap() {
   app.use(express.json());
 
   app.use("/api/tables", tableRouter);
+  app.use("/api/reservations", reservationRouter);
 
   app.use("/api/health", (_, res) => {
     res.send("checked");
