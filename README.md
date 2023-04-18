@@ -173,3 +173,56 @@ PUT api/table/5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3
   "message": "Table not found \"23\""
 }
 ```
+
+## Find Reservation By Id
+
+#### Find Reservation By Id Request
+
+```js
+GET api/reservations/idReservation
+```
+
+```js
+GET api/reservations/hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD
+```
+
+#### Find Reservation by id Response
+
+```js
+200 OK
+```
+
+```json
+{
+  "status": "Sucess",
+  "message": "Reservation gotten",
+  "data": {
+    "idReservation": "hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD",
+    "client": "Fabian Pico",
+    "number_people": 2,
+    "table": {
+      "id": "6744d3a0-6418-424e-93b3-cf88350981bb",
+      "number_table": 4,
+      "capacity": 2,
+      "location": 3,
+      "createdAt": "2023-04-17T22:39:44.008Z",
+      "updatedAt": "2023-04-17T22:39:44.008Z"
+    },
+    "createdAt": "2023-04-17T22:39:44.008Z",
+    "updatedAt": "2023-04-17T22:39:44.008Z"
+  }
+}
+```
+
+```js
+404 Not Found
+```
+
+```json
+{
+{
+  "status": "Error",
+  "message": "Reservation not found \"1\""
+}
+}
+```
