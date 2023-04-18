@@ -26,7 +26,7 @@ export const TABLES: Table[] = [
     updatedAt: new Date(),
   },
   {
-    id: '1fa03ba9-8d6f-472d-a8a8-81acf66b7dde ',
+    id: '1fa03ba9-8d6f-472d-a8a8-81acf66b7dde',
     number_table: 2,
     capacity: 8,
     location: 1,

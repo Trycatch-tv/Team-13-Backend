@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 
-import { locationEnum } from "./location";
+import { locationEnum } from './location';
 
 export class Table {
   public readonly id: string;
@@ -20,4 +20,4 @@ export class Table {
   }
 }
 
-export type TableDto = Omit<Table, "id" | "createdAt" | "updatedAt">;
+export type TableDto = Omit<Table, 'id' | 'createdAt' | 'updatedAt'>;
