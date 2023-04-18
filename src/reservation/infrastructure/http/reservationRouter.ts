@@ -1,11 +1,11 @@
-import express from "express";
+import express from 'express';
 
-import { reservationFindByIdController } from "../dependencies";
+import { reservationFindByIdController } from '../dependencies';
 
 const reservationRouter = express.Router();
 
 reservationRouter.get(
-  "/:idReservation",
+  '/:idReservation',
   reservationFindByIdController.run.bind(reservationFindByIdController)
 );
 
