@@ -10,10 +10,12 @@ import {
 const tableRouter = express.Router();
 
 tableRouter.post('/', tablePostController.run.bind(tablePostController));
+
 tableRouter.get(
   '/',
   tableFinderGetController.run.bind(tableFinderGetController)
 );
+
 tableRouter.get(
   '/:id',
   tableFindByIdController.run.bind(tableFindByIdController)
