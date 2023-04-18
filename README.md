@@ -226,3 +226,69 @@ GET api/reservations/hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD
 }
 }
 ```
+
+## Update Reservation
+
+#### Update Reservation Request
+
+```js
+PUT api/table/id
+```
+
+```js
+PUT api/table/O99Yq4Zx-jgJv-IY5X-62yr-uEMcrgVKfX5y
+
+{
+  "client": "Fabian Triviño",
+  "number_people": 1,
+  "table": {
+    "id": "6744d3a0-6418-424e-93b3-cf88350981bb",
+    "number_table": 4,
+    "capacity": 2,
+    "location": 3,
+    "createdAt": "2023-04-18T03:46:27.942Z",
+    "updatedAt": "2023-04-18T03:46:27.942Z"
+  }
+}
+```
+
+#### Update Table Response
+
+```js
+200 OK
+```
+
+```json
+{
+  "status": "Sucess",
+  "message": "Reservation Updated",
+  "data": {
+    "idReservation": "O99Yq4Zx-jgJv-IY5X-62yr-uEMcrgVKfX5y",
+    "client": "Fabian Triviño",
+    "number_people": 1,
+    "table": {
+      "id": "6744d3a0-6418-424e-93b3-cf88350981bb",
+      "number_table": 4,
+      "capacity": 2,
+      "location": 3,
+      "createdAt": "2023-04-18T03:46:27.942Z",
+      "updatedAt": "2023-04-18T03:46:27.942Z"
+    },
+    "createdAt": "2023-04-18T03:47:20.775Z",
+    "updatedAt": "2023-04-18T03:52:02.461Z"
+  }
+}
+```
+
+```js
+500 Internal server error.
+```
+
+```json
+{
+{
+  "status": "Eror",
+  "message": "Internal server error"
+}
+}
+```
