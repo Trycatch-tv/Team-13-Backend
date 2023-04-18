@@ -2,7 +2,7 @@ import { Table, TableDto } from '../domain/table';
 import { TableRepository } from '../domain/table-repository';
 import { TableNotFound } from '../domain/table-not-found';
 
-export class UpdateTable {
+export class TableUpdate {
   constructor(private readonly _tableRepository: TableRepository) {}
 
   async run(

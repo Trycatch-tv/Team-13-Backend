@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import status from 'http-status';
 
-import { UpdateTable } from '../../../application/table-update-use-case';
+import { TableUpdate } from '../../../application/table-update-use-case';
 import { ApiResponse } from '../../../../shared/api-response';
 import { TableNotFound } from '../../../domain/table-not-found';
 
 export class TableUpdateGetController {
-  constructor(private readonly _tableUpdate: UpdateTable) {}
+  constructor(private readonly _tableUpdate: TableUpdate) {}
 
   async run(req: Request, res: Response) {
     try {
