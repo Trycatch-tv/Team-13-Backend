@@ -3,9 +3,15 @@ import express from 'express';
 import {
   reservationFindByIdController,
   reservationUpdateGetController,
+  reservationFinderGetController,
 } from '../dependencies';
 
 const reservationRouter = express.Router();
+
+reservationRouter.get(
+  '/',
+  reservationFinderGetController.run.bind(reservationFinderGetController)
+);
 
 reservationRouter.get(
   '/:idReservation',

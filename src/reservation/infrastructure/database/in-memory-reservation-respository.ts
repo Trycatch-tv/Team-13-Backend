@@ -1,39 +1,10 @@
-import { Table } from '../../../table/domain/table';
 import { Reservation, ReservationDto } from '../../domain/reservation';
 import { ReservationRepository } from '../../domain/reservation-repository';
 import { RESERVATIONS } from './reservation_collection';
 
 export class InMemoryReservationRepository implements ReservationRepository {
-
-  async reservationFinder(client?: string | undefined, number_people?: number | undefined, table?: Table | undefined): Promise<Reservation[]> {
-    const reservations = RESERVATIONS.filter((reservation)=>{
-      if (client === undefined && number_people === undefined && table === undefined){
-        return true;
-      }
-
-      if (client === undefined && number_people == undefined && table!==undefined){
-        reservation.table > table; 
-      }
-
-      if (client === undefined && table === undefined && number_people !== undefined){
-        reservation.number_people > number_people;
-      }
-
-      if ( number_people === undefined && table === undefined && client !== undefined){
-        reservation.client > client;
-      }
-
-      return (
-        client !== undefined &&
-        number_people !== undefined && 
-        table !== undefined &&
-        reservation.client > client &&
-        reservation.number_people > number_people && 
-        reservation.table > table
-      );
-    })
-    return reservations;
-
+  async reservationFinder(): Promise<Reservation[]> {
+    return RESERVATIONS;
   }
 
   async findReservationById(
