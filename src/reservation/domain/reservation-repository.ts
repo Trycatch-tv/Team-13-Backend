@@ -1,14 +1,18 @@
-import { Reservation, ReservationDto } from './reservation';
+import { Reservation, ReservationUpdateDto } from './reservation';
 
 export interface ReservationRepository {
   save(reservation: Reservation): Promise<Reservation>;
 
-  reservationFinder(): Promise<Reservation[]>;
+  reservationFinder(
+    state?: number,
+    table?: string,
+    fecha?: string
+  ): Promise<Reservation[]>;
 
   findReservationById(id: string | number): Promise<Reservation | null>;
 
   updateReservation(
-    updateReservationDto: ReservationDto,
+    reservationUpdateDto: ReservationUpdateDto,
     id: string | number
   ): Promise<Reservation>;
 }
