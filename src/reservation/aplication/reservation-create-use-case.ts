@@ -7,6 +7,7 @@ import {
   ReservationDto,
   ReservationResponDto,
 } from '../domain/reservation';
+import { TableNotFound } from '../../table/domain/table-not-found';
 
 export class ReservationCreator {
   constructor(
@@ -15,10 +16,13 @@ export class ReservationCreator {
     private readonly _tableRepository: TableRepository
   ) {}
 
-  async run(
-    reservationDto: ReservationDto
-  ): Promise<ReservationResponDto | null> {
+  async run(reservationDto: ReservationDto): Promise<ReservationResponDto> {
     const table = await this._tableRepository.findById(reservationDto.table_id);
+
+    if (table === null) {
+      throw new TableNotFound(reservationDto.table_id);
+    }
+
     let customer = await this._customerRepository.findByNumberPhone(
       reservationDto.number_phone_customer
     );
@@ -40,20 +44,16 @@ export class ReservationCreator {
 
     const reservation = await this._reservationRepository.save(newReservation);
 
-    if (table !== null) {
-      const reservationRespon: ReservationResponDto = {
-        id: reservation.id,
-        status: reservation.status,
-        number_people: reservation.number_people,
-        customer,
-        table,
-        createdAt: reservation.createdAt,
-        updatedAt: reservation.updatedAt,
-      };
+    const reservationRespon: ReservationResponDto = {
+      id: reservation.id,
+      status: reservation.status,
+      number_people: reservation.number_people,
+      customer,
+      table,
+      createdAt: reservation.createdAt,
+      updatedAt: reservation.updatedAt,
+    };
 
-      return reservationRespon;
-    }
-
-    return null;
+    return reservationRespon;
   }
 }
