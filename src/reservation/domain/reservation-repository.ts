@@ -1,11 +1,11 @@
 import { Reservation, ReservationDto } from './reservation';
 
 export interface ReservationRepository {
+  save(reservation: Reservation): Promise<Reservation>;
+
   reservationFinder(): Promise<Reservation[]>;
 
-  findReservationById(
-    idReservation: string | number
-  ): Promise<Reservation | null>;
+  findReservationById(id: string | number): Promise<Reservation | null>;
 
   updateReservation(
     updateReservationDto: ReservationDto,

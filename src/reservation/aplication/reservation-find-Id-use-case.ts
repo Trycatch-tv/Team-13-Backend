@@ -5,14 +5,12 @@ import { ReservationNotFound } from '../domain/reservation-not-found';
 export class ReservationFindById {
   constructor(private readonly _reservationRepository: ReservationRepository) {}
 
-  async run(
-    idReservation: string | number
-  ): Promise<Reservation | ReservationNotFound> {
+  async run(id: string | number): Promise<Reservation | ReservationNotFound> {
     const reservation = await this._reservationRepository.findReservationById(
-      idReservation
+      id
     );
     if (reservation === null) {
-      throw new ReservationNotFound(idReservation);
+      throw new ReservationNotFound(id);
     }
     return reservation;
   }

@@ -4,9 +4,15 @@ import {
   reservationFindByIdController,
   reservationUpdateGetController,
   reservationFinderGetController,
+  reservationPostController,
 } from '../dependencies';
 
 const reservationRouter = express.Router();
+
+reservationRouter.post(
+  '/',
+  reservationPostController.run.bind(reservationPostController)
+);
 
 reservationRouter.get(
   '/',

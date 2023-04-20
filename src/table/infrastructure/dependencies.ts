@@ -9,7 +9,7 @@ import { TableFindByIdGetController } from './http/controller/table-findById-get
 import { TableUpdate } from '../application/table-update-use-case';
 import { TableUpdateGetController } from './http/controller/table-update-get-controller';
 
-const dbTableRepository = new InMemoryTableRepository();
+export const dbTableRepository = new InMemoryTableRepository();
 
 const tableCreator = new TableCreator(dbTableRepository);
 export const tablePostController = new TablePostController(tableCreator);
