@@ -1,4 +1,4 @@
-import { Reservation, ReservationDto } from '../../domain/reservation';
+import { Reservation, ReservationUpdateDto } from '../../domain/reservation';
 import { ReservationRepository } from '../../domain/reservation-repository';
 import { RESERVATIONS } from './reservation_collection';
 
@@ -8,8 +8,32 @@ export class InMemoryReservationRepository implements ReservationRepository {
     return reservation;
   }
 
-  async reservationFinder(): Promise<Reservation[]> {
-    return RESERVATIONS;
+  async reservationFinder(
+    state?: number,
+    table?: string,
+    fecha?: string
+  ): Promise<Reservation[]> {
+    const reservations = RESERVATIONS.filter((reservation) => {
+      if (state === undefined && table === undefined && fecha === undefined)
+        return true;
+      if (state !== undefined && table === undefined && fecha === undefined)
+        return reservation.status === state;
+      if (table !== undefined && state == undefined && fecha === undefined)
+        return reservation.table_id === table;
+      if (fecha !== undefined && table !== undefined && state == undefined) {
+        return new Date(reservation.updatedAt) > new Date(fecha);
+      }
+
+      return (
+        state !== undefined &&
+        table !== undefined &&
+        fecha !== undefined &&
+        reservation.status === state &&
+        reservation.table_id === table &&
+        new Date(reservation.updatedAt) > new Date(fecha)
+      );
+    });
+    return reservations;
   }
 
   async findReservationById(id: string | number): Promise<Reservation | null> {
@@ -20,26 +44,24 @@ export class InMemoryReservationRepository implements ReservationRepository {
   }
 
   async updateReservation(
-    updateReservationDto: ReservationDto,
+    reservationUpdateDto: ReservationUpdateDto,
     id: string | number
   ): Promise<Reservation> {
-    console.log(updateReservationDto, id);
-    // const reservationIndex = RESERVATIONS.findIndex(
-    //   (reservation) => reservation.id === id
-    // );
-    // const { customer_id, number_people, table_id } = updateReservationDto;
-    // const updatedAt = new Date();
+    const reservationIndex = RESERVATIONS.findIndex(
+      (reservation) => reservation.id === id
+    );
+    const { status, updatedAt, number_people, table_id } = reservationUpdateDto;
 
-    // if (reservationIndex !== -1) {
-    //   const reservationUpdated = {
-    //     ...RESERVATIONS[reservationIndex],
-    //     client,
-    //     number_people,
-    //     table,
-    //     updatedAt,
-    //   };
-    //   RESERVATIONS[reservationIndex] = reservationUpdated;
-    // }
-    return RESERVATIONS[0];
+    if (reservationIndex !== -1) {
+      const reservationUpdated = {
+        ...RESERVATIONS[reservationIndex],
+        number_people,
+        status,
+        table_id,
+        updatedAt,
+      };
+      RESERVATIONS[reservationIndex] = reservationUpdated;
+    }
+    return RESERVATIONS[reservationIndex];
   }
 }

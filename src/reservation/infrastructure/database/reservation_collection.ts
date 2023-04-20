@@ -13,7 +13,7 @@ export const RESERVATIONS: Reservation[] = [
   },
   {
     id: 'hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD',
-    status: statusEnum.CONFIRMED,
+    status: statusEnum.COMPLETED,
     customer_id: 'b6a3f98c-5e7f-4576-907e-896ba79c3ae6',
     number_people: 2,
     table_id: 'c36a7d10-5a54-4cea-8acf-794eaf161efe',
