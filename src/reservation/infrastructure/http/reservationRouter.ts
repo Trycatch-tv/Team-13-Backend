@@ -2,11 +2,17 @@ import express from 'express';
 
 import {
   reservationFindByIdController,
-  reservationUpdateGetController,
+  reservationUpdatePutController,
   reservationFinderGetController,
+  reservationPostController,
 } from '../dependencies';
 
 const reservationRouter = express.Router();
+
+reservationRouter.post(
+  '/',
+  reservationPostController.run.bind(reservationPostController)
+);
 
 reservationRouter.get(
   '/',
@@ -20,7 +26,7 @@ reservationRouter.get(
 
 reservationRouter.put(
   '/:id',
-  reservationUpdateGetController.run.bind(reservationUpdateGetController)
+  reservationUpdatePutController.run.bind(reservationUpdatePutController)
 );
 
 export { reservationRouter };

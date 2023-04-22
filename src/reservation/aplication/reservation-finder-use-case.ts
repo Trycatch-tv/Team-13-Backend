@@ -4,8 +4,16 @@ import { ReservationRepository } from '../domain/reservation-repository';
 export class ReservationFinder {
   constructor(private readonly _reservationRepository: ReservationRepository) {}
 
-  async run(): Promise<Reservation[]> {
-    const reservations = await this._reservationRepository.reservationFinder();
+  async run(
+    state?: number,
+    table?: string,
+    fecha?: string
+  ): Promise<Reservation[]> {
+    const reservations = await this._reservationRepository.reservationFinder(
+      state,
+      table,
+      fecha
+    );
     return reservations;
   }
 }

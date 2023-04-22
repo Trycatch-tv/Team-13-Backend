@@ -1,25 +1,50 @@
 import { v4 as uuidv4 } from 'uuid';
+import { statusEnum } from './reservation-status';
+import { Customer } from '../../customer/dominio/customer';
 import { Table } from '../../table/domain/table';
 
 export class Reservation {
-  public readonly idReservation: string;
-  public readonly client: string;
+  public readonly id: string | number;
+  public readonly status: statusEnum;
+  public readonly customer_id: string | number;
+  public readonly table_id: string | number;
   public readonly number_people: number;
-  public readonly table: Table;
   public readonly createdAt: Date;
   public readonly updatedAt: Date;
 
-  constructor(client: string, number_people: number, table: Table) {
-    this.idReservation = uuidv4();
-    this.client = client;
+  constructor(
+    customer_id: string | number,
+    number_people: number,
+    table_id: string | number
+  ) {
+    const date = new Date();
+    this.id = uuidv4();
+    this.status = statusEnum.CONFIRMED;
+    this.customer_id = customer_id;
     this.number_people = number_people;
-    this.table = table;
-    this.createdAt = new Date();
-    this.updatedAt = new Date();
+    this.table_id = table_id;
+    this.createdAt = date;
+    this.updatedAt = date;
   }
 }
 
 export type ReservationDto = Omit<
   Reservation,
-  'idReservation' | 'createdAt' | 'updatedAt'
+  'id' | 'customer_id' | 'status' | 'createdAt' | 'updatedAt'
+> & {
+  name_customer: string;
+  number_phone_customer: number;
+};
+
+export type ReservationUpdateDto = Omit<
+  Reservation,
+  'id' | 'customer_id' | 'createdAt'
 >;
+
+export type ReservationResponDto = Omit<
+  Reservation,
+  'table_id' | 'customer_id'
+> & {
+  customer: Customer;
+  table?: Table;
+};
