@@ -1,4 +1,4 @@
-import { Table } from '../../domain/table';
+import { Table, TableDto } from '../../domain/table';
 import { TableRepository } from '../../domain/table-repository';
 import { TABLES } from './table_collection';
 
@@ -30,5 +30,32 @@ export class InMemoryTableRepository implements TableRepository {
       );
     });
     return tables;
+  }
+
+  async findById(id: string | number): Promise<Table | null> {
+    const table = TABLES.find((table) => id === table.id);
+    return table ?? null;
+  }
+
+  async updateTable(
+    updateTableDto: TableDto,
+    id: string | number
+  ): Promise<Table> {
+    const tableIndex = TABLES.findIndex((table) => table.id === id);
+    const { capacity, location, number_table } = updateTableDto;
+    const updatedAt = new Date();
+
+    if (tableIndex !== -1) {
+      const tableUpdated = {
+        ...TABLES[tableIndex],
+        capacity,
+        location,
+        number_table,
+        updatedAt,
+      };
+
+      TABLES[tableIndex] = tableUpdated;
+    }
+    return TABLES[tableIndex];
   }
 }

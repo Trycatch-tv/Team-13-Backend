@@ -8,6 +8,7 @@ export class Table {
   public readonly capacity: number;
   public readonly location: locationEnum;
   public readonly createdAt: Date;
+  public readonly updatedAt: Date;
 
   constructor(number_table: number, capacity: number, location: locationEnum) {
     this.id = uuidv4();
@@ -15,7 +16,8 @@ export class Table {
     this.capacity = capacity;
     this.location = location;
     this.createdAt = new Date();
+    this.updatedAt = new Date();
   }
 }
 
-export type CreateTableDto = Omit<Table, 'id' | 'createdAt'>;
+export type TableDto = Omit<Table, 'id' | 'createdAt' | 'updatedAt'>;
