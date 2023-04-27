@@ -174,10 +174,11 @@ GET api/reservations
 
 ```js
 {
-	"number_people": 10,
+  "number_people": 10,
   "table_id": "5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3",
   "name_customer": "Neilla Lechmere",
-	"number_phone_customer": 9846416416
+  "number_phone_customer": 9846416416,
+  "createdAt": "2023-04-26T00:17:38.801Z"
 }
 ```
 
@@ -189,28 +190,28 @@ GET api/reservations
 
 ```js
 {
-	"status": "Success",
-	"message": "Reservation created",
-	"data": {
-		"id": "7667e4a1-d0c2-4874-9c62-0a0828f6fcae",
-		"status": 1,
-		"number_people": 10,
-		"customer": {
-			"id": "d51d7083-b2f6-4c77-840a-83316810dfb9",
-			"name": "Neilla Lechmere",
-			"createdAt": "2023-04-20T08:37:23.513Z"
-		},
-		"table": {
-			"id": "5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3",
-			"number_table": 1,
-			"capacity": 4,
-			"location": 4,
-			"createdAt": "2023-04-20T08:35:05.947Z",
-			"updatedAt": "2023-04-20T08:35:05.947Z"
-		},
-		"createdAt": "2023-04-20T08:37:23.513Z",
-		"updatedAt": "2023-04-20T08:37:23.513Z"
-	}
+  "status": "Success",
+  "message": "Reservation created",
+  "data": {
+    "id": "7667e4a1-d0c2-4874-9c62-0a0828f6fcae",
+    "status": 1,
+    "number_people": 10,
+    "customer": {
+      "id": "d51d7083-b2f6-4c77-840a-83316810dfb9",
+      "name": "Neilla Lechmere",
+      "createdAt": "2023-04-20T08:37:23.513Z"
+    },
+    "table": {
+      "id": "5bee0afa-6d46-4cfb-bc9d-ee2fd4e706f3",
+      "number_table": 1,
+      "capacity": 4,
+      "location": 4,
+      "createdAt": "2023-04-20T08:35:05.947Z",
+      "updatedAt": "2023-04-20T08:35:05.947Z"
+    },
+    "createdAt": "2023-04-20T08:37:23.513Z",
+    "updatedAt": "2023-04-20T08:37:23.513Z"
+  }
 }
 ```
 
@@ -245,19 +246,19 @@ GET api/reservations?state=2&fecha=2020-04-20&table=c36a7d10-5a54-4cea-8acf-794e
 
 ```js
 {
-	"status": "Success",
-	"message": "Reservations gotten",
-	"data": [
-		{
-			"id": "hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD",
-			"status": 2,
-			"customer_id": "b6a3f98c-5e7f-4576-907e-896ba79c3ae6",
-			"number_people": 2,
-			"table_id": "c36a7d10-5a54-4cea-8acf-794eaf161efe",
-			"createdAt": "2023-04-22T05:48:56.080Z",
-			"updatedAt": "2023-04-22T05:48:56.080Z"
-		}
-	]
+  "status": "Success",
+  "message": "Reservations gotten",
+  "data": [
+    {
+      "id": "hwTLq4C4-f76y-yfY1-o4lC-kyk4WwwvPuhD",
+      "status": 2,
+      "customer_id": "b6a3f98c-5e7f-4576-907e-896ba79c3ae6",
+      "number_people": 2,
+      "table_id": "c36a7d10-5a54-4cea-8acf-794eaf161efe",
+      "createdAt": "2023-04-22T05:48:56.080Z",
+      "updatedAt": "2023-04-22T05:48:56.080Z"
+    }
+  ]
 }
 ```
 
@@ -324,10 +325,10 @@ PUT api/table/c36a7d10-5a54-4cea-8acf-794eaf161efe
 
 ```js
 {
-	"status": 2,
-	"number_people": 7,
+  "status": 2,
+  "number_people": 7,
   "table_id": "c36a7d10-5a54-4cea-8acf-794eaf161efe",
-	"updatedAt": "2023-04-20T15:35:05.947Z"
+  "updatedAt": "2023-04-20T15:35:05.947Z"
 }
 ```
 
