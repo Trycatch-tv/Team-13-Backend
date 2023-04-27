@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { config as dotEnvConfig } from 'dotenv';
 dotEnvConfig();
 
@@ -8,7 +9,7 @@ import { reservationRouter } from './reservation/infrastructure/http/reservation
 
 function boostrap() {
   const app = express();
-
+  app.use(cors());
   app.use(express.json());
 
   app.use('/api/tables', tableRouter);
