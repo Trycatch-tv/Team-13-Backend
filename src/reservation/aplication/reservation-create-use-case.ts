@@ -39,7 +39,8 @@ export class ReservationCreator {
     const newReservation = new Reservation(
       customer.id,
       reservationDto.number_people,
-      reservationDto.table_id
+      reservationDto.table_id,
+      reservationDto.createdAt
     );
 
     const reservation = await this._reservationRepository.save(newReservation);

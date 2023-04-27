@@ -15,22 +15,22 @@ export class Reservation {
   constructor(
     customer_id: string | number,
     number_people: number,
-    table_id: string | number
+    table_id: string | number,
+    createdAt: Date
   ) {
-    const date = new Date();
     this.id = uuidv4();
     this.status = statusEnum.CONFIRMED;
     this.customer_id = customer_id;
     this.number_people = number_people;
     this.table_id = table_id;
-    this.createdAt = date;
-    this.updatedAt = date;
+    this.createdAt = createdAt;
+    this.updatedAt = createdAt;
   }
 }
 
 export type ReservationDto = Omit<
   Reservation,
-  'id' | 'customer_id' | 'status' | 'createdAt' | 'updatedAt'
+  'id' | 'customer_id' | 'status' | 'updatedAt'
 > & {
   name_customer: string;
   number_phone_customer: number;
