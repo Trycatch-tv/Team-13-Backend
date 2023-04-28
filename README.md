@@ -47,7 +47,7 @@ GET api/tables
 ```
 
 ```js
-GET api/tables?location=2&capacity=4
+GET api/tables?location=2&capacity=4&number=4
 ```
 
 #### Response
