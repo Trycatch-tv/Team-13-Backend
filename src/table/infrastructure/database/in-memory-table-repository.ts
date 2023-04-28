@@ -8,25 +8,50 @@ export class InMemoryTableRepository implements TableRepository {
     return table;
   }
 
-  async tableFinder(location?: number, capacity?: number): Promise<Table[]> {
+  async tableFinder(
+    location?: number,
+    capacity?: number,
+    number?: number
+  ): Promise<Table[]> {
     const tables = TABLES.filter((table) => {
-      if (location === undefined && capacity === undefined) {
+      if (
+        location === undefined &&
+        capacity === undefined &&
+        number === undefined
+      ) {
         return true;
       }
 
-      if (location === undefined && capacity !== undefined) {
-        return table.capacity > capacity;
+      if (
+        capacity !== undefined &&
+        location === undefined &&
+        number === undefined
+      ) {
+        return table.capacity === capacity;
       }
 
-      if (capacity === undefined && location !== undefined) {
-        return table.location > location;
+      if (
+        location !== undefined &&
+        capacity === undefined &&
+        number === undefined
+      ) {
+        return table.location === location;
+      }
+      if (
+        number !== undefined &&
+        location === undefined &&
+        capacity === undefined
+      ) {
+        return table.number_table === number;
       }
 
       return (
         capacity !== undefined &&
         location !== undefined &&
-        table.location > location &&
-        table.capacity > capacity
+        number !== undefined &&
+        table.location === location &&
+        table.capacity === capacity &&
+        table.number_table === number
       );
     });
     return tables;

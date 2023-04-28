@@ -10,13 +10,17 @@ export class TableFinderGetController {
   async run(req: Request, res: Response) {
     try {
       const locationParam = req.query?.location;
+      const capacityParam = req.query?.capacity;
+      const numberParam = req.query?.number;
       const location =
         typeof locationParam === 'string' ? parseInt(locationParam) : undefined;
-      const capacityParam = req.query?.capacity;
+
       const capacity =
         typeof capacityParam === 'string' ? parseInt(capacityParam) : undefined;
+      const number =
+        typeof numberParam === 'string' ? parseInt(numberParam) : undefined;
 
-      const tables = await this._tableFinder.run(location, capacity);
+      const tables = await this._tableFinder.run(location, capacity, number);
       return res
         .status(status.OK)
         .json(new ApiResponse('Success', 'Tables gotten', tables));
